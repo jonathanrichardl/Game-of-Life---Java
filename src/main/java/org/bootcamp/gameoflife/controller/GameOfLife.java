@@ -30,10 +30,26 @@ public class GameOfLife {
   }
 
   private void inferAndReplaceCellNewState(Board nextState, int rowIndex, int colIndex) {
-    if (board.getCellLifeStatus(rowIndex, colIndex)) {
+    int aliveNeighborsCount = getAliveNeighborCount(rowIndex, colIndex);
+
+    if (aliveNeighborsCount < 2) {
       nextState.setCellLifeStatus(rowIndex, colIndex, false);
-    } else {
+    } else if (aliveNeighborsCount == 3) {
       nextState.setCellLifeStatus(rowIndex, colIndex, true);
     }
+  }
+
+  private int getAliveNeighborCount(int rowIndex, int colIndex) {
+    int aliveCount = 0;
+
+    for (int i = Math.max(0, rowIndex - 1); i <= Math.min(rowIndex + 1, height - 1); i++) {
+      for (int j = Math.max(0, colIndex - 1); j <= Math.min(colIndex + 1, width - 1); j++) {
+        if ((i != rowIndex || j != colIndex) && board.getCellLifeStatus(i, j)) {
+          aliveCount++;
+        }
+      }
+    }
+
+    return aliveCount;
   }
 }
