@@ -31,6 +31,12 @@ public class Board {
     return false;
   }
 
+  public void setCellLifeStatus(int rowIndex, int colIndex, boolean newLifeStatus) {
+    HashSet<Integer> aliveCellColumns = aliveCells.get(rowIndex);
+
+    aliveCellColumns.add(colIndex);
+  }
+
   @Override
   public String toString() {
     StringBuilder boardStringBuffer = new StringBuilder((width * height) + height);
