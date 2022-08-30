@@ -18,15 +18,21 @@ public class GameOfLife {
   public Board nextState() {
     Board nextState = BoardGenerator.copyBoard(board);
 
-    for (int rowIndex = 0; rowIndex < height; rowIndex++) {
-      for (int colIndex = 0; colIndex < width; colIndex++) {
+    for (int rowIndex = 0; rowIndex <= height; rowIndex++) {
+      for (int colIndex = 0; colIndex <= width; colIndex++) {
         inferAndReplaceCellNewState(nextState, rowIndex, colIndex);
       }
     }
 
-    this.board = nextState;
+    updateInternalState(nextState);
 
     return nextState;
+  }
+
+  private void updateInternalState(Board nextState) {
+    this.board = nextState;
+    this.height = nextState.getHeight();
+    this.width = nextState.getWidth();
   }
 
   private void inferAndReplaceCellNewState(Board nextState, int rowIndex, int colIndex) {
@@ -36,7 +42,7 @@ public class GameOfLife {
       nextState.setCellLifeStatus(rowIndex, colIndex, false);
     } else if (aliveNeighborsCount == 3) {
       nextState.setCellLifeStatus(rowIndex, colIndex, true);
-    } else if (aliveNeighborsCount > 3){
+    } else if (aliveNeighborsCount > 3) {
       nextState.setCellLifeStatus(rowIndex, colIndex, false);
     }
   }

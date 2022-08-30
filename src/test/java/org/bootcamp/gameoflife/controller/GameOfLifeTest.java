@@ -53,4 +53,15 @@ class GameOfLifeTest {
     assertTrue(board.getCellLifeStatus(1, 1));
     assertFalse(board.getCellLifeStatus(1, 0));
   }
+
+  @Test
+  public void nextState_givenAScenarioWhereExpansionIsRequired_infersTheNewStateCorrectly() {
+    String boardStr = "  #\n  #\n###\n";
+    Board board = BoardGenerator.generateBoardFromString(boardStr);
+    GameOfLife expansionTest = new GameOfLife(board);
+
+    board = expansionTest.nextState();
+
+    assertTrue(board.getCellLifeStatus(3, 1));
+  }
 }
