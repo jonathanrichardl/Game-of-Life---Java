@@ -101,6 +101,16 @@ class BoardTest {
   }
 
   @Test
+  void setCellLifeStatus_givenDeadStatusToARowOutOfBoundIndex_boardIsNotUpdated() {
+    String boardStr = "###\n   \n###\n# #\n";
+    Board testBoard = BoardGenerator.generateBoardFromString(boardStr);
+
+    testBoard.setCellLifeStatus(5, 3, false);
+
+    assertEquals(boardStr, testBoard.toString());
+  }
+
+  @Test
   void resizeRight_givenPositiveResizeFactor_toStringReturnsExpandedBoard() {
     String boardStr = "###\n   \n###\n# #\n";
     Board testBoard = BoardGenerator.generateBoardFromString(boardStr);

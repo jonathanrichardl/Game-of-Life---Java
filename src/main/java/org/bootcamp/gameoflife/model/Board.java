@@ -37,6 +37,10 @@ public class Board {
 
       HashSet<Integer> aliveCellColumns = aliveCells.get(rowIndex);
 
+      if (aliveCellColumns == null) {
+        return;
+      }
+
       if (newLifeStatus) {
         aliveCellColumns.add(colIndex);
       } else {
