@@ -13,4 +13,12 @@ class BoardTest {
 
     assertEquals(false, testBoard.getCellLifeStatus(10, 5));
   }
+
+  @Test
+  void toString_givenAValidBoard_returnsCorrectStringRepresentation() {
+    String boardStr = "###\n   \n###\n# #\n";
+    Board testBoard = BoardGenerator.generateBoardFromString(boardStr);
+
+    assertEquals(boardStr, testBoard.toString());
+  }
 }

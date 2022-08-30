@@ -30,4 +30,19 @@ public class Board {
 
     return false;
   }
+
+  @Override
+  public String toString() {
+    StringBuilder boardStringBuffer = new StringBuilder((width * height) + height);
+
+    for (int rowIndex = 0; rowIndex < height; rowIndex++) {
+      for (int colIndex = 0; colIndex < width; colIndex++) {
+        boardStringBuffer.append(getCellLifeStatus(rowIndex, colIndex) ? '#' : ' ');
+      }
+
+      boardStringBuffer.append('\n');
+    }
+
+    return boardStringBuffer.toString();
+  }
 }
