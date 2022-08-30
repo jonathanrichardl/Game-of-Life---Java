@@ -32,7 +32,7 @@ public class Board {
   }
 
   public void setCellLifeStatus(int rowIndex, int colIndex, boolean newLifeStatus) {
-    if (checkIndexIsInbound(rowIndex)) {
+    if (checkIndexIsInbound(rowIndex, colIndex)) {
       HashSet<Integer> aliveCellColumns = aliveCells.get(rowIndex);
 
       if (newLifeStatus) {
@@ -69,7 +69,7 @@ public class Board {
     return boardStringBuffer.toString();
   }
 
-  private boolean checkIndexIsInbound(int rowIndex) {
-    return rowIndex >= 0;
+  private boolean checkIndexIsInbound(int rowIndex, int colIndex) {
+    return rowIndex >= 0 && colIndex >= 0;
   }
 }
