@@ -3,16 +3,16 @@ package org.bootcamp.gameoflife.model;
 import java.util.HashMap;
 import java.util.HashSet;
 
-class BoardGenerator {
+public class BoardGenerator {
 
-  static Board generateBoardFromString(String boardString) {
+  public static Board generateBoardFromString(String boardString) {
     Board generatedBoard = new Board(generateAliveCellsMap(boardString),
         parseBoardWidth(boardString), parseBoardHeight(boardString));
 
     return generatedBoard;
   }
 
-  static Board copyBoard(Board boardToCopy) {
+  public static Board copyBoard(Board boardToCopy) {
     return generateBoardFromString(boardToCopy.toString());
   }
 
