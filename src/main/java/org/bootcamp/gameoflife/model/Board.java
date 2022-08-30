@@ -34,7 +34,11 @@ public class Board {
   public void setCellLifeStatus(int rowIndex, int colIndex, boolean newLifeStatus) {
     HashSet<Integer> aliveCellColumns = aliveCells.get(rowIndex);
 
-    aliveCellColumns.add(colIndex);
+    if (newLifeStatus) {
+      aliveCellColumns.add(colIndex);
+    } else {
+      aliveCellColumns.remove(colIndex);
+    }
   }
 
   @Override

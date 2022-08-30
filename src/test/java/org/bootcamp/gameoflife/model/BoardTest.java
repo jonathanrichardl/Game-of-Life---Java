@@ -33,4 +33,16 @@ class BoardTest {
 
     assertEquals(expectedBoardStr, testBoard.toString());
   }
+
+  @Test
+  void setCellLifeStatus_givenDeadCellOfAnInboundCell_newCellStatusIsSet() {
+    String boardStr = "###\n   \n###\n# #\n";
+    Board testBoard = BoardGenerator.generateBoardFromString(boardStr);
+
+    testBoard.setCellLifeStatus(0, 0, false);
+
+    String expectedBoardStr = " ##\n   \n###\n# #\n";
+
+    assertEquals(expectedBoardStr, testBoard.toString());
+  }
 }
