@@ -41,6 +41,10 @@ public class Board {
     }
   }
 
+  public void resizeRight(int resizeFactor) {
+    width += resizeFactor;
+  }
+
   @Override
   public String toString() {
     StringBuilder boardStringBuffer = new StringBuilder((width * height) + height);
