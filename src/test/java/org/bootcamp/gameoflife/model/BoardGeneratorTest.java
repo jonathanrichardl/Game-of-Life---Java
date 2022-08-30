@@ -1,6 +1,7 @@
 package org.bootcamp.gameoflife.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -29,5 +30,15 @@ class BoardGeneratorTest {
     Board testBoard = testGenerator.generateBoardFromString(boardStr);
 
     assertEquals(true, testBoard.getCellLifeStatus(0, 0));
+  }
+
+  @Test
+  void copyBoard_givenAValidBoard_returnsACopyOfTheBoard() {
+    String boardStr = "###\n   \n###\n# #";
+    Board toCopy = BoardGenerator.generateBoardFromString(boardStr);
+
+    Board copyBoard = BoardGenerator.copyBoard(toCopy);
+
+    assertNotEquals(toCopy, copyBoard);
   }
 }

@@ -12,6 +12,10 @@ class BoardGenerator {
     return generatedBoard;
   }
 
+  static Board copyBoard(Board boardToCopy) {
+    return generateBoardFromString(boardToCopy.toString());
+  }
+
   static private HashMap<Integer, HashSet<Integer>> generateAliveCellsMap(String boardString) {
     HashMap<Integer, HashSet<Integer>> aliveCellsMap = new HashMap<>();
     int rowIndex = 0;
