@@ -41,4 +41,16 @@ class GameOfLifeTest {
 
     assertFalse(board.getCellLifeStatus(1, 1));
   }
+
+  @Test
+  void nextState_givenADontCareScenario_infersTheNewStateCorrectly() {
+    String boardStr = "#  \n # \n  #\n";
+    Board board = BoardGenerator.generateBoardFromString(boardStr);
+    GameOfLife dontCareTest = new GameOfLife(board);
+
+    board = dontCareTest.nextState();
+
+    assertTrue(board.getCellLifeStatus(1, 1));
+    assertFalse(board.getCellLifeStatus(1, 0));
+  }
 }
