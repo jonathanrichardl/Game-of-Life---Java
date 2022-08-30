@@ -16,4 +16,6 @@ TBD
 
 ## How to test
 
-TBD
+```bash
+./gradlew test
+```
