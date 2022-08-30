@@ -8,7 +8,7 @@ import org.bootcamp.gameoflife.model.BoardGenerator;
 
 public class BoardFileUtil {
 
-  static Board generateBoardFromFile(String filePath) throws IOException {
+  public static Board generateBoardFromFile(String filePath) throws IOException {
     Path fileDirectory = Path.of(filePath);
     return BoardGenerator.generateBoardFromString(Files.readString(fileDirectory));
   }
