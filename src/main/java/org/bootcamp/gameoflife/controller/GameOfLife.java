@@ -20,12 +20,20 @@ public class GameOfLife {
 
     for (int rowIndex = 0; rowIndex < height; rowIndex++) {
       for (int colIndex = 0; colIndex < width; colIndex++) {
-        nextState.setCellLifeStatus(rowIndex, colIndex, false);
+        inferAndReplaceCellNewState(nextState, rowIndex, colIndex);
       }
     }
 
     this.board = nextState;
 
     return nextState;
+  }
+
+  private void inferAndReplaceCellNewState(Board nextState, int rowIndex, int colIndex) {
+    if (board.getCellLifeStatus(rowIndex, colIndex)) {
+      nextState.setCellLifeStatus(rowIndex, colIndex, false);
+    } else {
+      nextState.setCellLifeStatus(rowIndex, colIndex, true);
+    }
   }
 }
