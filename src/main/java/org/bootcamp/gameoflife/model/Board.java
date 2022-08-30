@@ -45,6 +45,13 @@ public class Board {
     width += resizeFactor;
   }
 
+  public void resizeBottom(int resizeFactor) {
+    for (int additionalIndex = height; additionalIndex < height + resizeFactor; additionalIndex++) {
+      aliveCells.put(additionalIndex, new HashSet<>());
+    }
+    height += resizeFactor;
+  }
+
   @Override
   public String toString() {
     StringBuilder boardStringBuffer = new StringBuilder((width * height) + height);

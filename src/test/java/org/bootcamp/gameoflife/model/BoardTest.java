@@ -57,4 +57,16 @@ class BoardTest {
 
     assertEquals(expectedBoardStr, testBoard.toString());
   }
+
+  @Test
+  void resizeBottom_givenPositiveResizeFactor_toStringReturnsExpandedBoard() {
+    String boardStr = "###\n   \n###\n# #\n";
+    Board testBoard = BoardGenerator.generateBoardFromString(boardStr);
+
+    testBoard.resizeBottom(2);
+
+    String expectedBoardStr = "###\n   \n###\n# #\n   \n   \n";
+
+    assertEquals(expectedBoardStr, testBoard.toString());
+  }
 }
