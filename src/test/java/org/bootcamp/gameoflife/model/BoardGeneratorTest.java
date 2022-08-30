@@ -21,4 +21,13 @@ class BoardGeneratorTest {
 
     assertEquals(4, testBoard.getHeight());
   }
+
+  @Test
+  void generateBoardFromString_givenValidBoardString_boardIsGeneratedAndCanReturnLifeStatus() {
+    BoardGenerator testGenerator = new BoardGenerator();
+    String boardStr = "###\n   \n###\n# #";
+    Board testBoard = testGenerator.generateBoardFromString(boardStr);
+
+    assertEquals(true, testBoard.getCellLifeStatus(0, 0));
+  }
 }

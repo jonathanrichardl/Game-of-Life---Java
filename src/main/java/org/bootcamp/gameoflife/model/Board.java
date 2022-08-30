@@ -10,6 +10,7 @@ public class Board {
   private int height;
 
   public Board(HashMap<Integer, HashSet<Integer>> aliveCellsMap, int width, int height) {
+    this.aliveCells = aliveCellsMap;
     this.width = width;
     this.height = height;
   }
@@ -20,5 +21,9 @@ public class Board {
 
   public int getHeight() {
     return height;
+  }
+
+  public boolean getCellLifeStatus(int rowIndex, int colIndex) {
+    return aliveCells.get(rowIndex).contains(colIndex);
   }
 }
