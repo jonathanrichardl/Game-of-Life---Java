@@ -28,4 +28,14 @@ test {
 
 jacocoTestReport {
     dependsOn test
+
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: "org/bootcamp/gameoflife/view/**")
+        }))
+    }
 }
+
+apply plugin: 'application'
+
+mainClassName = 'org.bootcamp.gameoflife.view.MainMenu'
