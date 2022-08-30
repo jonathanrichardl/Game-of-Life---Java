@@ -79,6 +79,18 @@ class BoardTest {
   }
 
   @Test
+  void setCellLifeStatus_givenNewStatusOfAnOutOfBoundColumnIndexCell_boardIsExpanded() {
+    String boardStr = "###\n   \n###\n# #\n";
+    Board testBoard = BoardGenerator.generateBoardFromString(boardStr);
+
+    testBoard.setCellLifeStatus(0, 3, true);
+
+    String expectedBoardStr = "####\n    \n### \n# # \n";
+
+    assertEquals(expectedBoardStr, testBoard.toString());
+  }
+
+  @Test
   void resizeRight_givenPositiveResizeFactor_toStringReturnsExpandedBoard() {
     String boardStr = "###\n   \n###\n# #\n";
     Board testBoard = BoardGenerator.generateBoardFromString(boardStr);
