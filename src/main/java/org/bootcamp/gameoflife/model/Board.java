@@ -24,6 +24,10 @@ public class Board {
   }
 
   public boolean getCellLifeStatus(int rowIndex, int colIndex) {
-    return aliveCells.get(rowIndex).contains(colIndex);
+    if (aliveCells.containsKey(rowIndex)) {
+      return aliveCells.get(rowIndex).contains(colIndex);
+    }
+
+    return false;
   }
 }
