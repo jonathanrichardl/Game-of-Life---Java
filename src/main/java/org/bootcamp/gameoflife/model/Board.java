@@ -33,6 +33,8 @@ public class Board {
 
   public void setCellLifeStatus(int rowIndex, int colIndex, boolean newLifeStatus) {
     if (checkIndexIsInbound(rowIndex, colIndex)) {
+      expandBoardIfRequired(rowIndex);
+
       HashSet<Integer> aliveCellColumns = aliveCells.get(rowIndex);
 
       if (newLifeStatus) {
@@ -71,5 +73,11 @@ public class Board {
 
   private boolean checkIndexIsInbound(int rowIndex, int colIndex) {
     return rowIndex >= 0 && colIndex >= 0;
+  }
+
+  private void expandBoardIfRequired(int rowIndex) {
+    if (rowIndex >= height) {
+      resizeBottom(rowIndex + 1 - height);
+    }
   }
 }
