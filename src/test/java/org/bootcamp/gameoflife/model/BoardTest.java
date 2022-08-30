@@ -47,6 +47,16 @@ class BoardTest {
   }
 
   @Test
+  void setCellLifeStatus_givenNegativeRowIndex_doesNothing() {
+    String boardStr = "###\n   \n###\n# #\n";
+    Board testBoard = BoardGenerator.generateBoardFromString(boardStr);
+
+    testBoard.setCellLifeStatus(-1, 0, true);
+
+    assertEquals(boardStr, testBoard.toString());
+  }
+
+  @Test
   void resizeRight_givenPositiveResizeFactor_toStringReturnsExpandedBoard() {
     String boardStr = "###\n   \n###\n# #\n";
     Board testBoard = BoardGenerator.generateBoardFromString(boardStr);

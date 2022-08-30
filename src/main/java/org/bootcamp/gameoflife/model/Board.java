@@ -32,12 +32,14 @@ public class Board {
   }
 
   public void setCellLifeStatus(int rowIndex, int colIndex, boolean newLifeStatus) {
-    HashSet<Integer> aliveCellColumns = aliveCells.get(rowIndex);
+    if (checkIndexIsInbound(rowIndex)) {
+      HashSet<Integer> aliveCellColumns = aliveCells.get(rowIndex);
 
-    if (newLifeStatus) {
-      aliveCellColumns.add(colIndex);
-    } else {
-      aliveCellColumns.remove(colIndex);
+      if (newLifeStatus) {
+        aliveCellColumns.add(colIndex);
+      } else {
+        aliveCellColumns.remove(colIndex);
+      }
     }
   }
 
@@ -65,5 +67,9 @@ public class Board {
     }
 
     return boardStringBuffer.toString();
+  }
+
+  private boolean checkIndexIsInbound(int rowIndex) {
+    return rowIndex >= 0;
   }
 }
