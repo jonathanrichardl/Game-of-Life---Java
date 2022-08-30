@@ -13,4 +13,12 @@ class BoardGeneratorTest {
 
     assertEquals(3, testBoard.getWidth());
   }
+
+  @Test
+  void generateBoardFromString_givenValidBoardString_boardIsGeneratedAndBoardHeightIsDetermined() {
+    String boardStr = "###\n   \n###\n# #";
+    Board testBoard = BoardGenerator.generateBoardFromString(boardStr);
+
+    assertEquals(4, testBoard.getHeight());
+  }
 }

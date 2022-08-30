@@ -3,7 +3,10 @@ package org.bootcamp.gameoflife.model;
 public class BoardGenerator {
 
   static Board generateBoardFromString(String boardString) {
-    return new Board(null, parseBoardWidth(boardString), 0);
+    Board generatedBoard = new Board(null, parseBoardWidth(boardString),
+        parseBoardHeight(boardString));
+
+    return generatedBoard;
   }
 
   static private int parseBoardWidth(String boardString) {
@@ -14,5 +17,9 @@ public class BoardGenerator {
     }
 
     return width;
+  }
+
+  static private int parseBoardHeight(String boardString) {
+    return boardString.split("\\\n").length;
   }
 }
