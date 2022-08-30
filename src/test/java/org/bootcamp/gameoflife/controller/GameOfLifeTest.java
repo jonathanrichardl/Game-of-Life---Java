@@ -30,4 +30,15 @@ class GameOfLifeTest {
 
     assertTrue(board.getCellLifeStatus(1, 0));
   }
+
+  @Test
+  void nextState_givenAnOverpopulationScenario_infersTheNewStateCorrectly() {
+    String boardStr = "# #\n # \n# #\n";
+    Board board = BoardGenerator.generateBoardFromString(boardStr);
+    GameOfLife overpopulationTest = new GameOfLife(board);
+
+    board = overpopulationTest.nextState();
+
+    assertFalse(board.getCellLifeStatus(1, 1));
+  }
 }

@@ -36,6 +36,8 @@ public class GameOfLife {
       nextState.setCellLifeStatus(rowIndex, colIndex, false);
     } else if (aliveNeighborsCount == 3) {
       nextState.setCellLifeStatus(rowIndex, colIndex, true);
+    } else if (aliveNeighborsCount > 3){
+      nextState.setCellLifeStatus(rowIndex, colIndex, false);
     }
   }
 
